@@ -5,9 +5,7 @@ GO
 USE ERD_CAR2;
 GO
 
--- =====================
--- 1. CREATE TABLES
--- =====================
+--CREATE TABLES
 
 CREATE TABLE Car (
     CarID INT IDENTITY(1,1) PRIMARY KEY,
@@ -80,9 +78,9 @@ CREATE TABLE Maintenance (
     FOREIGN KEY (CarID) REFERENCES Car(CarID)
 );
 
--- =====================
--- 2. INSERT DATA (CREATE)
--- =====================
+
+-- 2. INSERT DATA
+
 
 -- Car
 INSERT INTO Car (Model, Brand, Year, PricePerDay, RegistrationNo) VALUES
@@ -148,9 +146,8 @@ INSERT INTO Maintenance (CarID, Description, Cost, MaintenanceDate) VALUES
 (4, 'Battery Replacement', 120.00, '2025-08-12'),
 (5, 'Engine Service', 300.00, '2025-08-20');
 
--- =====================
--- 3. READ (SELECT QUERIES)
--- =====================
+--SELECT DATA
+
 SELECT * FROM Car;
 SELECT * FROM Customer;
 SELECT * FROM Booking;
@@ -160,7 +157,7 @@ SELECT * FROM Location;
 SELECT * FROM Reservation;
 SELECT * FROM Maintenance;
 
--- Example joins
+-- JOINS
 SELECT c.FirstName, c.LastName, b.BookingID, car.Model, car.Brand, b.StartDate, b.EndDate
 FROM Booking b
 JOIN Customer c ON b.CustomerID = c.CustomerID
